@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto APISUL | Dashboard Executivo</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary: #005A9C;
+    --secondary: #0078D4;
+    --success: #107C10;
+    --success-bg: #DFF6DD;
+    --warning: #FFB900;
+    --warning-bg: #FFF4CE;
+    --danger: #D13438;
+    --danger-bg: #FDE7E9;
+    --purple: #68217A;
+    --purple-bg: #F3EDF7;
+
+    --bg: #F4F6F9;
+    --card-bg: #FFFFFF;
+    --text-main: #1B1B1B;
+    --text-muted: #605E5C;
+    --border-color: #EDEBE9;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    background: var(--bg);
+    padding: 40px 20px;
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+.header{
+    background: linear-gradient(135deg, #004578, #0078D4);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(0, 120, 212, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    right: -50px;
+    bottom: -50px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.header h1{
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.header p{
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.badges{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.badge{
+    padding: 8px 16px;
+    border-radius: 50px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.b1{ background: var(--success); }
+.b2{ background: var(--warning); color: #222; }
+.b3{ background: var(--danger); }
+
+/* CARDS APRIMORADOS */
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.card.blue::before { background: var(--secondary); }
+.card.green::before { background: var(--success); }
+.card.orange::before { background: var(--warning); }
+.card.purple::before { background: var(--purple); }
+.card.red::before { background: var(--danger); }
+
+.card-header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.card-icon{
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.card.blue .card-icon { background: #E6F2FA; }
+.card.green .card-icon { background: var(--success-bg); }
+.card.orange .card-icon { background: var(--warning-bg); }
+.card.purple .card-icon { background: var(--purple-bg); }
+.card.red .card-icon { background: var(--danger-bg); }
+
+.card-title{
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.card-value{
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+.card-desc{
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* SECTIONS */
+.section{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.section h2{
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* HIGHLIGHT */
+.highlight{
+    background: #F0F6FC;
+    border-left: 5px solid var(--secondary);
+    padding: 20px 24px;
+    border-radius: 8px;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.highlight br {
+    display: block;
+    content: "";
+    margin-top: 8px;
+}
+
+/* PROGRESS */
+.progress-group {
+    margin-bottom: 20px;
+}
+
+.progress-group:last-child {
+    margin-bottom: 0;
+}
+
+.progress-label{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.progress{
+    height: 12px;
+    background: #E1DFDD;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bar{
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1s ease-in-out;
+}
+
+.projeto{ width: 39.4%; background: linear-gradient(90deg, #004578, #0078D4); }
+.contratos{ width: 66.7%; background: linear-gradient(90deg, #0B5A0B, #107C10); }
+.golive{ width: 55%; background: linear-gradient(90deg, #4B1658, #68217A); }
+
+/* PROCESSOS */
+.process-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.process{
+    border-radius: 14px;
+    padding: 24px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.process h3{
+    margin-bottom: 16px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.process ul{
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.process li{
+    margin-bottom: 8px;
+}
+
+.process.green{ background: linear-gradient(135deg, #107C10, #0B5A0B); }
+.process.yellow{ background: linear-gradient(135deg, #FFB900, #E09B00); color: #1B1B1B; }
+.process.red{ background: linear-gradient(135deg, #D13438, #A4262C); }
+
+/* TIMELINE */
+.timeline{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.milestone{
+    flex: 1;
+    min-width: 180px;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.timeline-date{
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.milestone.done { background: #107C10; }
+.milestone.current { background: #FFB900; color: #1B1B1B; border: 2px solid #CA9100; }
+.milestone.future { background: #0078D4; }
+.milestone.prod { background: #68217A; }
+
+/* LISTAS */
+.list{
+    padding-left: 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.list li{
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.list li::marker {
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.footer{
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 40px;
+    font-size: 13px;
+    font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>🚛 Projeto APISUL</h1>
+        <p>Dashboard Executivo de Integração, Homologação e Go Live</p>
+        <div class="badges">
+            <div class="badge b1">✅ Coleta em Homologação</div>
+            <div class="badge b2">🟡 Entrega aguardando consolidação da Coleta</div>
+            <div class="badge b3">🔴 Rodoviário Puro pendente</div>
+        </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+        <div class="card blue">
+            <div class="card-header-flex">
+                <div class="card-title">Projeto Concluído</div>
+                <div class="card-icon">📊</div>
+            </div>
+            <div class="card-value">39,4%</div>
+            <div class="card-desc">Cronograma Geral</div>
+        </div>
+
+        <div class="card green">
+            <div class="card-header-flex">
+                <div class="card-title">Contratos Validados</div>
+                <div class="card-icon">✅</div>
+            </div>
+            <div class="card-value">66,7%</div>
+            <div class="card-desc">Coleta e Entrega</div>
+        </div>
+
+        <div class="card orange">
+            <div class="card-header-flex">
+                <div class="card-title">Situações de Teste</div>
+                <div class="card-icon">🧪</div>
+            </div>
+            <div class="card-value">155</div>
+            <div class="card-desc">Planejadas</div>
+        </div>
+
+        <div class="card purple">
+            <div class="card-header-flex">
+                <div class="card-title">Cenários</div>
+                <div class="card-icon">📋</div>
+            </div>
+            <div class="card-value">8</div>
+            <div class="card-desc">Homologação</div>
+        </div>
+
+        <div class="card green">
+            <div class="card-header-flex">
+                <div class="card-title">Processos Aptos</div>
+                <div class="card-icon">🚀</div>
+            </div>
+            <div class="card-value">1/3</div>
+            <div class="card-desc">Coleta liberada</div>
+        </div>
+
+        <div class="card red">
+            <div class="card-header-flex">
+                <div class="card-title">Go Live</div>
+                <div class="card-icon">🎯</div>
+            </div>
+            <div class="card-value">01/10</div>
+            <div class="card-desc">Entrada em Produção</div>
+        </div>
+    </div>
+
+    <!-- STATUS GERAL -->
+    <div class="section">
+        <h2>📢 Situação Atual</h2>
+        <div class="highlight">
+            ✅ Já é possível criar programações de Coleta em Homologação no eCargo para geração da Pré-SMP.<br>
+            ✅ Mapper de Coleta validado.<br>
+            ✅ Mapper de Entrega validado.<br>
+            ✅ Pré-SMP de Coleta validada.<br>
+            ✅ Pré-SMP de Entrega validada.<br>
+            🟡 InsereSMP da Coleta em validação final.<br>
+            🟡 Entrega aguardando validação completa do fluxo principal da Coleta.<br>
+            🔴 Rodoviário Puro ainda pendente de validação e desenvolvimento.
+        </div>
+    </div>
+
+    <!-- EVOLUÇÃO -->
+    <div class="section">
+        <h2>📈 Evolução do Projeto</h2>
+        
+        <div class="progress-group">
+            <div class="progress-label">
+                <span>Cronograma Geral</span>
+                <span>39,4%</span>
+            </div>
+            <div class="progress"><div class="bar projeto"></div></div>
+        </div>
+
+        <br>
+
+        <div class="progress-group">
+            <div class="progress-label">
+                <span>Contratos / Mappers</span>
+                <span>66,7%</span>
+            </div>
+            <div class="progress"><div class="bar contratos"></div></div>
+        </div>
+
+        <br>
+
+        <div class="progress-group">
+            <div class="progress-label">
+                <span>Prontidão para Go Live</span>
+                <span>55%</span>
+            </div>
+            <div class="progress"><div class="bar golive"></div></div>
+        </div>
+    </div>
+
+    <!-- PROCESSOS -->
+    <div class="section">
+        <h2>🚦 Status dos Processos</h2>
+        <div class="process-grid">
+            <div class="process green">
+                <h3>🟢 Coleta</h3>
+                <ul>
+                    <li>Mapper validado</li>
+                    <li>XML recebido pelo HUB</li>
+                    <li>Ponto Geográfico validado</li>
+                    <li>Pré SMP validada</li>
+                    <li>Programação disponível em homologação</li>
+                    <li>Homologação inicial liberada</li>
+                    <li>Insere SMP em validação final</li>
+                    <li>Alterações e Cancelamentos: <strong>Aguardando definição do fornecedor</strong> sobre a localização do campo de <em>início efetivo</em> (Pré-requisito)</li>
+                </ul>
+            </div>
+
+            <div class="process yellow">
+                <h3>🟡 Entrega</h3>
+                <ul>
+                    <li>Mapper validado</li>
+                    <li>Pré SMP validada</li>
+                    <li>Estrutura reaproveitada da Coleta</li>
+                    <li>Aguardando estabilização do Insere SMP</li>
+                    <li>Ainda não liberada para homologação ponta a ponta</li>
+                    <li>Tracking pendente</li>
+                    <li>Retornos pendentes</li>
+                </ul>
+            </div>
+
+            <div class="process red">
+                <h3>🔴 Rodoviário Puro</h3>
+                <ul>
+                    <li>Mapper pendente</li>
+                    <li>Validação Postman pendente</li>
+                    <li>Pré SMP pendente</li>
+                    <li>Homologação não iniciada</li>
+                    <li>Desenvolvimento pendente</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section">
+        <h2>📅 Timeline do Projeto</h2>
+        <div class="timeline">
+            <div class="milestone done">
+                <div class="timeline-date">18/09</div>
+                XMLs disponibilizados pelo TMS
+            </div>
+            <div class="milestone done">
+                <div class="timeline-date">22/09</div>
+                Início dos testes básicos de Coleta
+            </div>
+            <div class="milestone current">
+                <div class="timeline-date">22/09</div>
+                Entrega da API Ativa Apisul
+            </div>
+            <div class="milestone future">
+                <div class="timeline-date">23/09</div>
+                Testes Iniciais de Entrega
+            </div>
+            <div class="milestone future">
+                <div class="timeline-date">24/09</div>
+                Início previsto Rodoviário Puro
+            </div>
+            <div class="milestone future">
+                <div class="timeline-date">25/09</div>
+                Testes Integrados de Coleta
+            </div>
+            <div class="milestone future">
+                <div class="timeline-date">28/09</div>
+                Testes Integrados Rodoviário Puro
+            </div>
+            <div class="milestone prod">
+                <div class="timeline-date">01/10</div>
+                GO LIVE
+            </div>
+        </div>
+    </div>
+
+    <!-- ATENÇÕES -->
+    <div class="section">
+        <h2>⚠️ Principais Atenções</h2>
+        <ul class="list">
+            <li>Finalizar homologação do método Insere SMP da Coleta.</li>
+            <li><strong>Pré-requisito (Alterações/Cancelamentos):</strong> Aguardando definição do fornecedor sobre a localização do campo de <em>início efetivo</em>.</li>
+            <li>Liberar a homologação ponta a ponta da Entrega.</li>
+            <li>Validar o contrato do Rodoviário Puro.</li>
+            <li>Receber e homologar APIs ativas da Apisul.</li>
+            <li>Concluir retornos ao eCargo.</li>
+            <li>Concluir tracking e eventos da viagem.</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        Projeto APISUL • Última atualização: 21/09/2026
+    </div>
+
+</div>
+</body>
+</html>
