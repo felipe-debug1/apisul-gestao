@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projeto APISUL | Dashboard Executivo</title>
 
+<!-- Favicon: Ícone de Caminhão na Aba do Navegador -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>">
+
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 
 <style>
 :root{
@@ -363,8 +367,8 @@ body{
         <p>Dashboard Executivo de Integração, Homologação e Go Live</p>
         <div class="badges">
             <div class="badge b1">✅ Coleta em Homologação</div>
-            <div class="badge b2">🟡 Entrega aguardando consolidação da Coleta</div>
-            <div class="badge b3">🔴 Rodoviário Puro pendente</div>
+            <div class="badge b2">🟡 Entrega em desenvolvimento</div>
+            <div class="badge b3">🔴 Rodoviário Puro pendente validação de contrato</div>
         </div>
     </div>
 
@@ -375,7 +379,7 @@ body{
                 <div class="card-title">Projeto Concluído</div>
                 <div class="card-icon">📊</div>
             </div>
-            <div class="card-value">42%</div>
+            <div class="card-value">43%</div>
             <div class="card-desc">Cronograma Geral</div>
         </div>
 
@@ -384,7 +388,7 @@ body{
                 <div class="card-title">Contratos Validados</div>
                 <div class="card-icon">✅</div>
             </div>
-            <div class="card-value">70%</div>
+            <div class="card-value">75%</div>
             <div class="card-desc">Coleta e Entrega</div>
         </div>
 
@@ -434,8 +438,10 @@ body{
             ✅ Mapeamento de Entrega validado.<br>
             ✅ Pré-SMP de Coleta validada.<br>
             ✅ Pré-SMP de Entrega validada.<br>
-            🟡 InsereSMP da Coleta em validação final de desenvolvimento no Hub.<br>
-            🔴 Rodoviário Puro ainda pendente de validação e desenvolvimento.
+            ✅ InsereSMP da Coleta validado.<br>
+            ✅ Início da Homologação de coleta previsto para hoje (22/09/2026). 🥳 <br>
+            🟡 Entrega em desenvolvimento. <br>
+            🔴 Rodoviário Puro ainda pendente de validação do contrato da préSMP.
         </div>
     </div>
 
@@ -446,7 +452,7 @@ body{
         <div class="progress-group">
             <div class="progress-label">
                 <span>Cronograma Geral</span>
-                <span>41%</span>
+                <span>43%</span>
             </div>
             <div class="progress"><div class="bar projeto"></div></div>
         </div>
@@ -456,7 +462,7 @@ body{
         <div class="progress-group">
             <div class="progress-label">
                 <span>Contratos / Mapeamentos</span>
-                <span>67%</span>
+                <span>75%</span>
             </div>
             <div class="progress"><div class="bar contratos"></div></div>
         </div>
@@ -474,9 +480,9 @@ body{
                     <li>XML recebido e tratado pelo HUB</li>
                     <li>Ponto Geográfico validado</li>
                     <li>Pré SMP validada</li>
-                    <li>Programação disponível em homologação</li>
+                    <li>OS disponível em homologação</li>
+                    <li>Insere SMP validado</li>
                     <li>Homologação inicial liberada</li>
-                    <li>Insere SMP em validação final</li>
                     <li>Alterações e Cancelamentos: <strong>Aguardando definição do fornecedor</strong> sobre a localização do campo de <em>início efetivo</em> (Pré-requisito)</li>
                 </ul>
             </div>
@@ -486,8 +492,7 @@ body{
                 <ul>
                     <li>Mapeamento validado</li>
                     <li>Pré SMP validada</li>
-                    <li>Estrutura reaproveitada da Coleta</li>
-                    <li>Ainda não liberada para validação de testes iniciais</li>
+                    <li>Em validação do processo via Hub para liberação inicial de homologação </li>
                 </ul>
             </div>
 
@@ -495,9 +500,8 @@ body{
                 <h3>🔴 Rodoviário Puro</h3>
                 <ul>
                     <li>Mapeamento em execução</li>
-                    <li>Pré SMP pendente</li>
-                    <li>Estrutura reaproveitada da Entrega</li>
-                    <li>Desenvolvimento pendente</li>
+                    <li>Pré SMP pendente de validação do contrato</li>
+                    <li>Desenvolvimento no Hub pendente </li>
                 </ul>
             </div>
         </div>
@@ -546,19 +550,19 @@ body{
     <div class="section">
         <h2>⚠️ Principais Atenções</h2>
         <ul class="list">
-            <li>Finalizar homologação do método Insere SMP da Coleta.</li>
             <li><strong>Pré-requisito (Alterações/Cancelamentos):</strong> Aguardando definição do fornecedor sobre a localização do campo de <em>início efetivo</em>.</li>
             <li>Validar campo onde será enviado o Cliente Proposta.</li>
             <li>Liberar a homologação inicial da Entrega.</li>
             <li>Validar o contrato do Rodoviário Puro.</li>
+            <li>Formalização de entrega da API ativa da Apisul</li>
             <li>Homologar APIs ativas da Apisul.</li>
-            <li>Concluir retornos ao eCargo.</li>
-            <li>Concluir tracking.</li>
+            <li>Estruturar retornos ao eCargo.</li>
+            <li>Desenvolver rotina de tracking e retorno ao eCargo.</li>
         </ul>
     </div>
 
     <div class="footer">
-        Projeto APISUL • Última atualização: 21/09/2026 17:31
+        Projeto APISUL • Última atualização: 22/09/2026 10:30
     </div>
 
 </div>
