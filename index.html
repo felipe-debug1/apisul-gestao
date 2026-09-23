@@ -262,7 +262,7 @@ body{
     transition: width 1s ease-in-out;
 }
 
-.projeto{ width: 43%; background: linear-gradient(90deg, #004578, #0078D4); }
+.projeto{ width: 60%; background: linear-gradient(90deg, #004578, #0078D4); }
 .contratos{ width: 100%; background: linear-gradient(90deg, #0B5A0B, #107C10); }
 
 /* PROCESSOS */
@@ -366,8 +366,8 @@ body{
         <p>Dashboard Executivo de Integração, Homologação e Go Live</p>
         <div class="badges">
             <div class="badge b1">✅ Coleta em Homologação</div>
-            <div class="badge b2">🟡 Entrega em validação final</div>
-            <div class="badge b3">🔴 Rodoviário Puro no início do desenvolvimento</div>
+            <div class="badge b2">🟡 Entrega em desenvolvimento</div>
+            <div class="badge b3">🔴 Rodoviário Puro pendente validação de contrato</div>
         </div>
     </div>
 
@@ -378,7 +378,7 @@ body{
                 <div class="card-title">Projeto Concluído</div>
                 <div class="card-icon">📊</div>
             </div>
-            <div class="card-value">43%</div>
+            <div class="card-value">60%</div>
             <div class="card-desc">Cronograma Geral</div>
         </div>
 
@@ -414,8 +414,8 @@ body{
                 <div class="card-title">Processos Aptos</div>
                 <div class="card-icon">🚀</div>
             </div>
-            <div class="card-value">1/3</div>
-            <div class="card-desc">Coleta liberada</div>
+            <div class="card-value">3/3</div>
+            <div class="card-desc">Coleta, Entrega e Rodoviário Puro</div>
         </div>
 
         <div class="card red">
@@ -432,15 +432,9 @@ body{
     <div class="section">
         <h2>📢 Situação Atual</h2>
         <div class="highlight">
-            ✅ Já é possível criar programações de Coleta em Homologação no eCargo para geração da Pré-SMP.<br>
-            ✅ Mapeamento de Coleta validado.<br>
-            ✅ Mapeamento de Entrega validado.<br>
-            ✅ Pré-SMP de Coleta validada.<br>
-            ✅ Pré-SMP de Entrega validada.<br>
-            ✅ InsereSMP da Coleta validado.<br>
-            ✅ Início da Homologação de coleta previsto para hoje (22/09/2026). 🥳 <br>
-            🟡 Entrega em validação. <br>
-            🔴 Rodoviário Puro em início de desenvolvimento.
+            ✅ Em Homologação do Processo de Coleta. 🥳 <br>
+            🟡 Entrega e Rodoviário Puro disponibilizados no Hub para início das homologações. <br>
+            🟡 Retornos ao eCargo em desenvolvimento. <br>
         </div>
     </div>
 
@@ -451,7 +445,7 @@ body{
         <div class="progress-group">
             <div class="progress-label">
                 <span>Cronograma Geral</span>
-                <span>43%</span>
+                <span>60%</span>
             </div>
             <div class="progress"><div class="bar projeto"></div></div>
         </div>
@@ -475,31 +469,24 @@ body{
             <div class="process green">
                 <h3>🟢 Coleta</h3>
                 <ul>
-                    <li>Mapeamento validado</li>
-                    <li>XML recebido e tratado pelo HUB</li>
-                    <li>Ponto Geográfico validado</li>
-                    <li>Pré SMP validada</li>
-                    <li>OS disponível em homologação</li>
-                    <li>Insere SMP validado</li>
                     <li>Homologação inicial liberada</li>
-                    <li>Alterações e Cancelamentos: <strong>Aguardando definição do fornecedor</strong> sobre a localização do campo de <em>início efetivo</em> (Pré-requisito)</li>
+                    <li>Alterações e Cancelamentos: <strong>Aguardando definição do fornecedor e do time de negócios</strong>
                 </ul>
             </div>
 
             <div class="process yellow">
                 <h3>🟡 Entrega</h3>
                 <ul>
-                    <li>Mapeamento validado</li>
-                    <li>Pré SMP validada</li>
-                    <li>Em validação do processo via Hub para liberação inicial de homologação </li>
+                    <li>Homologação inicial liberada </li>
+                    <li>Alterações e Cancelamentos: <strong>Aguardando definição do fornecedor e do time de negócios</strong>
                 </ul>
             </div>
 
             <div class="process red">
                 <h3>🔴 Rodoviário Puro</h3>
                 <ul>
-                    <li>Mapeamento em concluído</li>
-                    <li>Desenvolvimento no Hub pendente </li>
+                    <li>Homologação inicial liberada</li>
+                    <li>Alterações e Cancelamentos: <strong>Aguardando definição do fornecedor e do time de negócios</strong>
                 </ul>
             </div>
         </div>
@@ -526,7 +513,7 @@ body{
                 Testes Iniciais de Entrega
             </div>
             <div class="milestone future">
-                <div class="timeline-date">24/09</div>
+                <div class="timeline-date">23/09</div>
                 Início previsto de testes do Rodoviário Puro
             </div>
             <div class="milestone future">
@@ -534,7 +521,7 @@ body{
                 Testes Integrados de Coleta e Entrega
             </div>
             <div class="milestone future">
-                <div class="timeline-date">28/09</div>
+                <div class="timeline-date">25/09</div>
                 Testes Integrados Rodoviário Puro
             </div>
             <div class="milestone prod">
@@ -548,18 +535,16 @@ body{
     <div class="section">
         <h2>⚠️ Principais Atenções</h2>
         <ul class="list">
-            <li><strong>Pré-requisito (Alterações/Cancelamentos):</strong> Aguardando definição do fornecedor sobre a localização do campo de <em>início efetivo</em>.</li>
-            <li>Validar data de liberação do campo onde será enviado o Cliente Proposta.</li>
-            <li>Liberar a homologação inicial da Entrega.</li>
-            <li>Formalização de entrega da API ativa da Apisul</li>
-            <li>Homologar APIs ativas da Apisul.</li>
-            <li>Estruturar retornos ao eCargo.</li>
-            <li>Desenvolver rotina de tracking e retorno ao eCargo.</li>
+            <li><strong>Pré-requisito (Alterações/Cancelamentos):</strong> Aguardando definição.</li>
+            <li>Validar envio do Cliente Proposta.</li>
+            <li>Entrega e Rodoiário Puro liberados para validação inicial.</li>
+            <li>Concluir estrutura de retornos ao eCargo.</li>
+            <li>Desenvolver rotina de tracking.</li>
         </ul>
     </div>
 
     <div class="footer">
-        Projeto APISUL • Última atualização: 22/09/2026 15:16
+        Projeto APISUL • Última atualização: 23/09/2026 10:15
     </div>
 
 </div>
