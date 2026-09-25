@@ -355,6 +355,287 @@ body{
     font-size: 13px;
     font-weight: 500;
 }
+
+/* CARDS CLICÁVEIS */
+.card.clickable{
+    cursor: pointer;
+}
+.card.clickable:active{
+    transform: translateY(-1px) scale(0.99);
+}
+.card-hint{
+    font-size: 11px;
+    color: var(--secondary);
+    font-weight: 700;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.mini-breakdown{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 700;
+}
+.mini-breakdown span{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot.ok{ background: var(--success); }
+.dot.erro{ background: var(--danger); }
+.dot.pend{ background: var(--warning); }
+
+/* MODAL */
+.modal-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 25, 35, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    padding: 30px 16px;
+    overflow-y: auto;
+}
+.modal-overlay.open{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.modal-box{
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 820px;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    overflow: hidden;
+    animation: modalIn 0.2s ease-out;
+    margin: auto;
+}
+@keyframes modalIn{
+    from{ opacity: 0; transform: translateY(10px) scale(0.98); }
+    to{ opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-header{
+    background: linear-gradient(135deg, #004578, #0078D4);
+    color: white;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.modal-header h3{
+    font-size: 18px;
+    font-weight: 700;
+}
+.modal-header .modal-sub{
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 500;
+    margin-top: 4px;
+}
+.modal-back{
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.modal-back.show{ display: flex; }
+.modal-close{
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.modal-close:hover, .modal-back:hover{ background: rgba(255,255,255,0.3); }
+.modal-titlewrap{ flex: 1; }
+.modal-tabs{
+    display: flex;
+    gap: 8px;
+    padding: 16px 26px 0 26px;
+    flex-wrap: wrap;
+}
+.tab-btn{
+    border: 1px solid var(--border-color);
+    background: var(--bg);
+    color: var(--text-muted);
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.tab-btn.active{
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+.tab-count{
+    background: rgba(0,0,0,0.08);
+    padding: 1px 7px;
+    border-radius: 50px;
+    font-size: 11px;
+}
+.tab-btn.active .tab-count{ background: rgba(255,255,255,0.25); }
+.modal-body{
+    padding: 20px 26px 26px 26px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+.empty-state{
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+    font-size: 14px;
+}
+
+/* Scenario summary list (inside Cenários modal) */
+.scenario-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.scenario-row:hover{
+    border-color: var(--secondary);
+    background: #F8FBFE;
+}
+.scenario-num{
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+.scenario-info{ flex: 1; min-width: 0; }
+.scenario-info .sname{ font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.scenario-progress{
+    height: 8px;
+    background: #E1DFDD;
+    border-radius: 999px;
+    overflow: hidden;
+    width: 100%;
+}
+.scenario-progress-bar{
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #004578, #0078D4);
+}
+.scenario-pct{
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--primary);
+    width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+}
+.scenario-arrow{
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* Test item card (inside detail lists) */
+.test-item{
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+}
+.test-item-head{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+.test-item-title{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.test-item-scenario{
+    font-size: 11px;
+    color: var(--secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+.status-pill{
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.status-pill.ok{ background: var(--success-bg); color: #0B5A0B; }
+.status-pill.erro{ background: var(--danger-bg); color: #A4262C; }
+.status-pill.pend{ background: var(--warning-bg); color: #8A6100; }
+.test-item-field{
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    line-height: 1.5;
+}
+.test-item-field b{ color: var(--text-main); font-weight: 600; }
+.test-item-obs{
+    margin-top: 10px;
+    background: var(--danger-bg);
+    color: #7A1E22;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.test-item-area{
+    display: inline-block;
+    margin-top: 8px;
+    background: #EEF3F8;
+    color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+}
 </style>
 </head>
 
@@ -391,22 +672,29 @@ body{
             <div class="card-desc">Coleta e Entrega</div>
         </div>
 
-        <div class="card orange">
+        <div class="card orange clickable" onclick="openSituacoesModal()">
             <div class="card-header-flex">
                 <div class="card-title">Situações de Teste</div>
                 <div class="card-icon">🧪</div>
             </div>
-            <div class="card-value">155</div>
+            <div class="card-value" id="cardTotalSituacoes">153</div>
             <div class="card-desc">Planejadas</div>
+            <div class="mini-breakdown" id="cardBreakdown">
+                <span><span class="dot ok"></span>-- OK</span>
+                <span><span class="dot erro"></span>-- Erro</span>
+                <span><span class="dot pend"></span>-- Pend.</span>
+            </div>
+            <div class="card-hint">👆 Toque para ver detalhes</div>
         </div>
 
-        <div class="card purple">
+        <div class="card purple clickable" onclick="openCenariosModal()">
             <div class="card-header-flex">
                 <div class="card-title">Cenários</div>
                 <div class="card-icon">📋</div>
             </div>
-            <div class="card-value">8</div>
+            <div class="card-value" id="cardTotalCenarios">8</div>
             <div class="card-desc">Homologação</div>
+            <div class="card-hint">👆 Toque para ver detalhes</div>
         </div>
 
         <div class="card green">
@@ -432,9 +720,8 @@ body{
     <div class="section">
         <h2>📢 Situação Atual</h2>
         <div class="highlight">
-            ✅ Em Homologação do Processo de Coleta. 🥳 <br>
-            🟡 Entrega e Rodoviário Puro disponibilizados no Hub para início das homologações. <br>
-            🟡 Retornos ao eCargo implementados. <br>
+            ✅ Processos em homologação. <br>
+            🔴 Retorno de ativação de viagem vindo com dados simulados na Apisul, gerando erro no TMS.   <br>
         </div>
     </div>
 
@@ -470,7 +757,7 @@ body{
                 <h3>🟢 Coleta</h3>
                 <ul>
                     <li>Homologação inicial liberada</li>
-                    <li>Alterações e Cancelamentos: <strong>em validação</strong>
+                    <li>Ativação de viagem com dados inconsistentes. </li>
                 </ul>
             </div>
 
@@ -478,7 +765,7 @@ body{
                 <h3>🟡 Entrega</h3>
                 <ul>
                     <li>Homologação inicial liberada </li>
-                    <li>Alterações e Cancelamentos: <strong>em desenvolvimento</strong>
+                    <li>Ativação de viagem com dados inconsistentes. </li>
                 </ul>
             </div>
 
@@ -486,7 +773,7 @@ body{
                 <h3>🔴 Rodoviário Puro</h3>
                 <ul>
                     <li>Homologação inicial liberada</li>
-                    <li>Alterações e Cancelamentos: <strong>em desenvolvimento</strong>
+                    <li>Ativação de viagem com dados inconsistentes. </li>
                 </ul>
             </div>
         </div>
@@ -535,17 +822,221 @@ body{
     <div class="section">
         <h2>⚠️ Principais Atenções</h2>
         <ul class="list">
-            <li><strong>Pré-requisito (Alterações/Cancelamentos):</strong> Definido 24/09/2026.</li>
-            <li>Validar envio do Cliente Proposta.</li>
-            <li>Entrega e Rodoiário Puro liberados para validação inicial.</li>
-            <li>Desenvolver rotina de tracking.</li>
+            <li> Ativação de viagem não está apta a retornar dados de bitrem (necessidade de desenvolver envio DocumentoSMP).</li>
+            <li> Ativação de viagem vindo com dados fictícios, mesmo na validação dos testes integrados.</li>
+            <li> Aguarda definição da Apisul para desenvolver rotina de Tracking.</li>
         </ul>
     </div>
 
     <div class="footer">
-        Projeto APISUL • Última atualização: 24/09/2026 10:10
+        Projeto APISUL • Última atualização: 25/09/2026 09:25
     </div>
 
 </div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <button class="modal-back" id="modalBackBtn" onclick="backToCenarios()">←</button>
+            <div class="modal-titlewrap">
+                <h3 id="modalTitle">Título</h3>
+                <div class="modal-sub" id="modalSub"></div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-tabs" id="modalTabs"></div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+/* =========================================================================
+   DADOS DOS CENÁRIOS DE HOMOLOGAÇÃO
+   -------------------------------------------------------------------------
+   Gerado a partir da planilha "Cenários de Homologação Apisul".
+   Para atualizar: substitua o array DATA_CENARIOS abaixo por uma nova
+   exportação da planilha (uma entrada por cenário, com sua lista de
+   situações). Os cards e o resumo no topo recalculam sozinhos a partir
+   destes dados — não é necessário editar percentuais manualmente.
+
+   Campos de cada situação:
+     n = número da situação | s = situação | p = premissa
+     e = resultado esperado | v = validação | r = resultado do teste
+         ("Realizado Ok" | "Realizado Erro" | "Não Realizado")
+     a = área responsável    | o = observações
+   ========================================================================= */
+const DATA_CENARIOS = [{"id":1,"name":"Operação Coleta","items":[{"n":1,"s":"Gerar OS de Coleta no e-Cargo","p":"OS de coleta gerada a partir do booking/agendamento em homologação","e":"OS criada com todos os dados base da viagem (cliente, origem, destino, container, datas)","v":"Consultar a OS gerada no e-Cargo","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":2,"s":"Integrar a OS com a Apisul","p":"OS de coleta gerada no e-Cargo","e":"Dados base da viagem enviados para a Apisul com base na O.S","v":"Verificar log de integração da OS e-Cargo x Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":3,"s":"Executar o método Insere Pré SMP","p":"OS integrada e dados base da viagem disponíveis","e":"Pré SMP criada na Apisul a partir dos dados da OS","v":"Consultar a Pré SMP no portal Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":4,"s":"Validar retorno de insucesso na integração do Pré SMP","p":"Enviar Pré SMP com dado obrigatório inválido/ausente","e":"Apisul retorna o motivo do insucesso e a SMP não é criada","v":"Conferir a mensagem de retorno no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":5,"s":"Realizar ajuste do erro e reenviar o método Insere Pré SMP","p":"Motivo do insucesso retornado pela Apisul","e":"Após o ajuste, o reenvio do método é aceito e a Pré SMP é criada","v":"Reprocessar a integração e conferir o novo retorno","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":6,"s":"Validar o retorno do Nº da SMP em caso de sucesso","p":"Integração do Pré SMP realizada com sucesso","e":"Apisul retorna o Nº da SMP para o e-Cargo","v":"Conferir o Nº da SMP retornado no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":7,"s":"Gravar o Nº da SMP no e-Cargo vinculado à OS","p":"Nº da SMP retornado pela Apisul","e":"Nº da SMP gravado e visível na OS de coleta do e-Cargo","v":"Consultar a OS no e-Cargo e localizar o Nº da SMP","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":8,"s":"Transportador executa o método Busca Motorista","p":"SMP criada na Apisul","e":"Método retorna os motoristas disponíveis/cadastrados para a viagem","v":"Executar o método e conferir o retorno","r":"Realizado Erro","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":9,"s":"Pegar os dados do motorista","p":"Motorista cadastrado e homologado na Apisul","e":"Dados do motorista retornados corretamente (nome, CPF, CNH, status)","v":"Conferir os dados do motorista retornados pela Apisul","r":"Realizado Erro","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":10,"s":"Validar motorista não homologado/reprovado pela Apisul","p":"Motorista sem cadastro ou com pesquisa reprovada","e":"Retorno de insucesso informando a restrição do motorista; SMP não liberada","v":"Conferir a mensagem de retorno no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":11,"s":"Alocar dados de placa e veículo na SMP","p":"Motorista selecionado para a viagem","e":"Placa e veículo alocados na SMP com sucesso","v":"Consultar a SMP no portal Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":12,"s":"Validar veículo/placa não homologado pela Apisul","p":"Placa sem cadastro ou reprovada na Apisul","e":"Retorno de insucesso informando a restrição do veículo","v":"Conferir a mensagem de retorno no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":13,"s":"Gravar dados de motorista, placa e veículo no TMS","p":"Dados de motorista e veículo aprovados pela Apisul","e":"Dados gravados no TMS e vinculados à OS/SMP","v":"Consultar a viagem no TMS","r":"Realizado Erro","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":14,"s":"Validar SMP liberada para o veículo seguir para coleta","p":"Motorista e veículo alocados e aprovados","e":"SMP com status liberado para início do transporte","v":"Consultar o status da SMP no portal Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":15,"s":"Validar a compra do vale-pedágio","p":"SMP liberada com motorista e veículo alocados","e":"Vale-pedágio comprado e vinculado à SMP, com valor, número do comprovante e rota retornados para o e-Cargo","v":"Consultar a compra do vale-pedágio no portal Apisul e o registro na OS do e-Cargo","r":"Realizado Erro","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":16,"s":"Seguir para coleta","p":"SMP liberada","e":"Veículo segue para o embarcador com monitoramento ativo","v":"Acompanhar o monitoramento da SMP na Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":17,"s":"Estufar container no embarcador","p":"Veículo no embarcador","e":"Estufagem registrada e container vinculado à operação","v":"Conferir o registro da estufagem no e-Cargo","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":18,"s":"Gerar DT (Documento de Transporte)","p":"Container estufado","e":"DT gerado no e-Cargo e enviado na integração com a Apisul","v":"Consultar o DT no e-Cargo e no retorno da integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":19,"s":"Validar o valor da carga após a emissão do CTe","p":"CTe emitido para a operação de coleta","e":"Valor devido da carga enviado para a Apisul após a emissão do CTe","v":"Conferir o valor da carga registrado na SMP","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":20,"s":"Executar o método Insere Documento","p":"DT/CTe e notas fiscais emitidos","e":"Documentos da viagem inseridos na SMP da Apisul","v":"Consultar os documentos vinculados à SMP no portal Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":21,"s":"Executar o método Insere SMP","p":"Documentos e valor da carga enviados","e":"SMP efetivada na Apisul com os documentos e o valor da carga","v":"Consultar a SMP efetivada no portal Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":22,"s":"Validar retorno de insucesso no Insere SMP, ajustar o erro e reenviar o método","p":"Envio do Insere SMP com informação inválida","e":"Apisul retorna o motivo do insucesso; após ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":23,"s":"Executar o método Busca SMP","p":"SMP efetivada na Apisul","e":"Método retorna a situação atual da SMP","v":"Executar o método e conferir o retorno","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":24,"s":"Migrar o status da SMP para o e-Cargo","p":"Retorno do método Busca SMP","e":"Status da SMP atualizado no e-Cargo","v":"Consultar o status da SMP na OS do e-Cargo","r":"Realizado Erro","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":25,"s":"Executar o Método Tracking Busca Evento a cada 5 minutos","p":"SMP em andamento","e":"Consulta automática executada a cada 5 minutos enquanto a SMP estiver aberta","v":"Conferir a periodicidade das consultas no log de integração","r":"Não Realizado","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":26,"s":"Validar os eventos de tracking da coleta","p":"Eventos gerados durante a viagem","e":"Eventos SAÍDA DO CNTR DO TERMINAL DE VAZIOS, CHEGADA DO CNTR NO EMBARCADOR, INÍCIO COLETA AUDITADO, FIM COLETA AUDITADO e SAÍDA DO CNTR DO EMBARCADOR recebidos e migrados","v":"Conferir os eventos na aba de Tracking da plataforma","r":"Não Realizado","a":"INTERMODAL","o":"Dados fictícios retornando da Apisul, gerando erro no TMS."},{"n":27,"s":"Validar o encerramento da SMP","p":"Operação de coleta concluída","e":"SMP encerrada e as consultas de tracking são interrompidas","v":"Conferir o status Encerrada da SMP e a parada das consultas","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":28,"s":"Validar o retorno de Sucesso ao final do processo","p":"Fluxo de coleta concluído sem erros","e":"Retorno de Sucesso registrado para a integração da operação de coleta","v":"Conferir o retorno final no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":2,"name":"Operação Coleta Com Cancelamento de OS","items":[{"n":1,"s":"Executar o fluxo de coleta até a criação da SMP","p":"Cenário 1 executado até a integração da Pré SMP","e":"Nº da SMP retornado pela Apisul e gravado na OS","v":"Consultar a SMP no portal Apisul e a OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":2,"s":"Cancelar a OS de coleta no e-Cargo antes da alocação do motorista","p":"OS de coleta com SMP criada e sem motorista alocado","e":"OS cancelada no e-Cargo","v":"Consultar o status da OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":3,"s":"Integrar o cancelamento da OS com a Apisul","p":"OS cancelada no e-Cargo","e":"Cancelamento enviado para a Apisul e SMP cancelada","v":"Conferir o envio no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":4,"s":"Validar o cancelamento da SMP na Apisul","p":"Cancelamento integrado","e":"SMP com status de cancelada no portal Apisul","v":"Consultar o status da SMP no portal Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":5,"s":"Validar retorno de insucesso no cancelamento e reenvio do método","p":"Envio de cancelamento com dado inválido ou SMP inexistente","e":"Apisul retorna o motivo do insucesso; após ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":6,"s":"Cancelar a OS após a alocação de motorista, placa e veículo","p":"SMP com motorista e veículo já alocados","e":"SMP cancelada e dados de motorista/veículo liberados","v":"Consultar a SMP no portal Apisul e a viagem no TMS","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":7,"s":"Cancelar a OS após a emissão do CTe","p":"CTe emitido e valor da carga já enviado para a Apisul","e":"CTe cancelado, OS cancelada e SMP cancelada; nenhum dado permanece ativo","v":"Consultar CTe, OS e SMP após o cancelamento","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":8,"s":"Validar o cancelamento dos dados no TMS","p":"OS cancelada após gravação no TMS","e":"Viagem cancelada no TMS, sem motorista e veículo vinculados","v":"Consultar a viagem no TMS","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":9,"s":"Validar o cancelamento da compra do vale-pedágio","p":"SMP cancelada com vale-pedágio já comprado","e":"Vale-pedágio cancelado/estornado e vinculado à SMP cancelada, com retorno do cancelamento para o e-Cargo","v":"Consultar o cancelamento do vale-pedágio no portal Apisul e o registro na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":10,"s":"Validar a interrupção do Método Tracking Busca Evento","p":"SMP cancelada","e":"Consultas de tracking a cada 5 minutos interrompidas para a SMP cancelada","v":"Conferir a parada das consultas no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":11,"s":"Validar que os eventos de tracking da coleta não são gerados após o cancelamento","p":"SMP cancelada","e":"Nenhum novo evento de tracking recebido ou migrado para a OS cancelada","v":"Consultar a aba de Tracking da plataforma","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":12,"s":"Validar que a OS/SMP cancelada não fica visível na plataforma","p":"OS e SMP canceladas","e":"Operação cancelada não deve ser localizada na nova plataforma","v":"Pesquisar a OS e a SMP na plataforma","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":13,"s":"Gerar nova OS de coleta após o cancelamento","p":"OS anterior cancelada","e":"Nova OS gerada e integrada, com nova Pré SMP criada na Apisul","v":"Consultar a nova OS no e-Cargo e a nova SMP na Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":14,"s":"Executar o fluxo de coleta completo com a nova OS","p":"Nova OS integrada","e":"Fluxo de coleta concluído com retorno de Sucesso e SMP encerrada","v":"Acompanhar o fluxo completo até o encerramento da SMP","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":3,"name":"Operação de Entrega","items":[{"n":1,"s":"Gerar OS de Entrega no e-Cargo","p":"Container descarregado no porto de destino e entrega agendada","e":"OS de entrega criada com os dados base da viagem","v":"Consultar a OS de entrega no e-Cargo","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":2,"s":"Integrar a OS de entrega com a Apisul","p":"OS de entrega gerada no e-Cargo","e":"Dados base da viagem enviados para a Apisul","v":"Verificar log de integração da OS e-Cargo x Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":3,"s":"Executar o método Insere Pré SMP","p":"OS de entrega integrada","e":"Pré SMP de entrega criada na Apisul","v":"Consultar a Pré SMP no portal Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":4,"s":"Validar retorno de insucesso na integração do Pré SMP","p":"Enviar Pré SMP com dado obrigatório inválido/ausente","e":"Apisul retorna o motivo do insucesso e a SMP não é criada","v":"Conferir a mensagem de retorno no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":5,"s":"Realizar ajuste do erro e reenviar o método Insere Pré SMP","p":"Motivo do insucesso retornado pela Apisul","e":"Após o ajuste, o reenvio do método é aceito e a Pré SMP é criada","v":"Reprocessar a integração e conferir o novo retorno","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":6,"s":"Validar o retorno do Nº da SMP em caso de sucesso","p":"Integração do Pré SMP realizada com sucesso","e":"Apisul retorna o Nº da SMP para o e-Cargo","v":"Conferir o Nº da SMP retornado no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":8,"s":"Transportador executa o método Busca Motorista","p":"SMP de entrega criada na Apisul","e":"Método retorna os motoristas disponíveis/cadastrados para a viagem","v":"Executar o método e conferir o retorno","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":9,"s":"Pegar os dados do motorista","p":"Motorista cadastrado e homologado na Apisul","e":"Dados do motorista retornados corretamente (nome, CPF, CNH, status)","v":"Conferir os dados do motorista retornados pela Apisul","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":10,"s":"Validar motorista não homologado/reprovado pela Apisul","p":"Motorista sem cadastro ou com pesquisa reprovada","e":"Retorno de insucesso informando a restrição do motorista; SMP não liberada","v":"Conferir a mensagem de retorno no log de integração","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":11,"s":"Alocar dados de placa e veículo na SMP","p":"Motorista selecionado para a entrega","e":"Placa e veículo alocados na SMP com sucesso","v":"Consultar a SMP no portal Apisul","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":12,"s":"Validar veículo/placa não homologado pela Apisul","p":"Placa sem cadastro ou reprovada na Apisul","e":"Retorno de insucesso informando a restrição do veículo","v":"Conferir a mensagem de retorno no log de integração","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":13,"s":"Gravar dados de motorista, placa e veículo no TMS","p":"Dados de motorista e veículo aprovados pela Apisul","e":"Dados gravados no TMS e vinculados à OS/SMP de entrega","v":"Consultar a viagem no TMS","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":14,"s":"Validar SMP liberada para o veículo seguir para entrega","p":"Motorista e veículo alocados e aprovados","e":"SMP com status liberado para início da entrega","v":"Consultar o status da SMP no portal Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":15,"s":"Seguir para entrega","p":"SMP liberada","e":"Veículo segue para o destinatário com monitoramento ativo","v":"Acompanhar o monitoramento da SMP na Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":16,"s":"Receber a carga no destinatário","p":"Veículo no destinatário","e":"Recebimento registrado na operação de entrega","v":"Conferir o registro do recebimento no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":17,"s":"Executar o método Insere Documento","p":"Documentos da entrega emitidos (CTe, NF, canhoto)","e":"Documentos da viagem inseridos na SMP da Apisul","v":"Consultar os documentos vinculados à SMP no portal Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":18,"s":"Executar o método Lançar SMP","p":"Documentos da entrega enviados","e":"SMP de entrega lançada na Apisul com os documentos","v":"Consultar a SMP lançada no portal Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":19,"s":"Validar retorno de insucesso no Lançar SMP, ajustar o erro e reenviar o método","p":"Envio do Lançar SMP com informação inválida","e":"Apisul retorna o motivo do insucesso; após ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":20,"s":"Executar o método Busca SMP","p":"SMP de entrega lançada","e":"Método retorna a situação atual da SMP","v":"Executar o método e conferir o retorno","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":21,"s":"Migrar o status da SMP para o e-Cargo","p":"Retorno do método Busca SMP","e":"Status da SMP de entrega atualizado no e-Cargo","v":"Consultar o status da SMP na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":22,"s":"Validar a compra do vale-pedágio","p":"SMP de entrega migrada para o e-Cargo com motorista e veículo alocados","e":"Vale-pedágio comprado e vinculado à SMP de entrega, com valor, número do comprovante e rota retornados para o e-Cargo","v":"Consultar a compra do vale-pedágio no portal Apisul e o registro na OS de entrega do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":23,"s":"Executar o Método Tracking Busca Evento a cada 5 minutos","p":"SMP de entrega em andamento","e":"Consulta automática executada a cada 5 minutos enquanto a SMP estiver aberta","v":"Conferir a periodicidade das consultas no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":24,"s":"Validar os eventos de tracking da entrega","p":"Eventos gerados durante a entrega","e":"Eventos SAÍDA CNTR DO TERM PORT DEST., CHEGADA DO CNTR NO DESTINATÁRIO, INÍCIO ENTREGA AUDITADO, FIM ENTREGA AUDITADO, SAÍDA DO CNTR DO DESTINATÁRIO e ENTRADA DO CNTR NO TERMINAL DE VAZIOS recebidos e migrados","v":"Conferir os eventos na aba de Tracking da plataforma","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":25,"s":"Validar o status TRANSPORTE FINALIZADO","p":"Entrega concluída e canhoto disponível","e":"Status de transporte finalizado migrado para a plataforma","v":"Consultar o status final na aba de Tracking","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":26,"s":"Validar o encerramento da SMP","p":"Operação de entrega concluída","e":"SMP encerrada e as consultas de tracking são interrompidas","v":"Conferir o status Encerrada da SMP e a parada das consultas","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":27,"s":"Validar o retorno de Sucesso ao final do processo","p":"Fluxo de entrega concluído sem erros","e":"Retorno de Sucesso registrado para a integração da operação de entrega","v":"Conferir o retorno final no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":4,"name":"Operação de Entrega com Cancelamento OS","items":[{"n":1,"s":"Executar o fluxo de entrega até a criação da SMP","p":"Cenário 3 executado até a integração da Pré SMP","e":"Nº da SMP de entrega retornado pela Apisul e gravado na OS","v":"Consultar a SMP no portal Apisul e a OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":2,"s":"Cancelar a OS de entrega no e-Cargo antes da alocação do motorista","p":"OS de entrega com SMP criada e sem motorista alocado","e":"OS de entrega cancelada no e-Cargo","v":"Consultar o status da OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":3,"s":"Integrar o cancelamento da OS com a Apisul","p":"OS de entrega cancelada no e-Cargo","e":"Cancelamento enviado para a Apisul e SMP cancelada","v":"Conferir o envio no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":4,"s":"Validar o cancelamento da SMP na Apisul","p":"Cancelamento integrado","e":"SMP de entrega com status de cancelada no portal Apisul","v":"Consultar o status da SMP no portal Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":5,"s":"Validar retorno de insucesso no cancelamento e reenvio do método","p":"Envio de cancelamento com dado inválido ou SMP inexistente","e":"Apisul retorna o motivo do insucesso; após ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":6,"s":"Cancelar a OS após a alocação de motorista, placa e veículo","p":"SMP de entrega com motorista e veículo já alocados","e":"SMP cancelada e dados de motorista/veículo liberados","v":"Consultar a SMP no portal Apisul e a viagem no TMS","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":7,"s":"Cancelar a OS após o lançamento da SMP e envio dos documentos","p":"SMP lançada com documentos inseridos","e":"SMP cancelada e documentos desvinculados da operação","v":"Consultar a SMP e os documentos no portal Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":8,"s":"Cancelar a OS após a emissão do CTe de entrega","p":"CTe de entrega emitido","e":"CTe cancelado, OS cancelada e SMP cancelada; nenhum dado permanece ativo","v":"Consultar CTe, OS e SMP após o cancelamento","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":9,"s":"Validar o cancelamento dos dados no TMS","p":"OS cancelada após gravação no TMS","e":"Viagem de entrega cancelada no TMS, sem motorista e veículo vinculados","v":"Consultar a viagem no TMS","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":10,"s":"Validar o cancelamento da compra do vale-pedágio","p":"SMP de entrega cancelada com vale-pedágio já comprado","e":"Vale-pedágio cancelado/estornado e vinculado à SMP cancelada, com retorno do cancelamento para o e-Cargo","v":"Consultar o cancelamento do vale-pedágio no portal Apisul e o registro na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":11,"s":"Validar a interrupção do Método Tracking Busca Evento","p":"SMP de entrega cancelada","e":"Consultas de tracking a cada 5 minutos interrompidas para a SMP cancelada","v":"Conferir a parada das consultas no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":12,"s":"Validar que os eventos de tracking da entrega não são gerados após o cancelamento","p":"SMP de entrega cancelada","e":"Nenhum novo evento de tracking recebido ou migrado para a OS cancelada","v":"Consultar a aba de Tracking da plataforma","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":13,"s":"Validar que a OS/SMP de entrega cancelada não fica visível na plataforma","p":"OS e SMP canceladas","e":"Operação cancelada não deve ser localizada na nova plataforma","v":"Pesquisar a OS e a SMP na plataforma","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":14,"s":"Gerar nova OS de entrega após o cancelamento","p":"OS anterior cancelada","e":"Nova OS de entrega gerada e integrada, com nova Pré SMP criada na Apisul","v":"Consultar a nova OS no e-Cargo e a nova SMP na Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":15,"s":"Executar o fluxo de entrega completo com a nova OS","p":"Nova OS de entrega integrada","e":"Fluxo de entrega concluído com retorno de Sucesso e SMP encerrada","v":"Acompanhar o fluxo completo até o encerramento da SMP","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":5,"name":"Operação Rodo Puro","items":[{"n":1,"s":"Criar o agendamento da operação Rodo Puro no e-Cargo","p":"Cliente e rota Rodo Puro cadastrados em homologação","e":"Agendamento criado no e-Cargo","v":"Consultar o agendamento no e-Cargo","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":2,"s":"Gerar a OS em Lote no e-Cargo","p":"Agendamento criado","e":"OS gerada em lote com todos os dados da viagem","v":"Consultar as OS's geradas no lote","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":3,"s":"Realizar a associação e a emissão do documento de transporte","p":"OS de Rodo Puro gerada","e":"Documento de transporte (CTe) associado e emitido para a OS","v":"Consultar o documento de transporte vinculado à OS","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":4,"s":"Validar o envio automático da OS para o Fornecedor e para o Apisul","p":"Documento de transporte emitido","e":"OS enviada automaticamente para o Fornecedor e para o Apisul","v":"Conferir o envio no log de integração e-Cargo x Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":5,"s":"Validar o valor de mercadoria enviado junto com a OS","p":"CTe emitido com o valor da mercadoria","e":"Valor de mercadoria enviado corretamente para o Apisul","v":"Conferir o valor recebido no Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":6,"s":"Validar retorno de insucesso no envio automático da OS e o reenvio","p":"Envio da OS com dado obrigatório inválido/ausente","e":"Motivo do insucesso retornado; após o ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":8,"s":"Fornecedor gera a SMP no Apisul a partir da OS recebida","p":"Fornecedor com acesso ao Apisul e OS recebida","e":"SMP gerada no Apisul vinculada à OS do e-Cargo","v":"Consultar a SMP gerada no Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":9,"s":"Validar a SMP gerada com nome do motorista, placas e telefone","p":"SMP gerada no Apisul","e":"SMP contém nome do motorista, placas e telefone informados pelo fornecedor","v":"Consultar os dados da SMP no Apisul","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":10,"s":"Solicitar a estimativa para o envio do telefone","p":"SMP gerada sem o telefone do motorista","e":"Solicitação de estimativa enviada e telefone recebido posteriormente","v":"Conferir a solicitação e o retorno do telefone no log de integração","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":11,"s":"Validar o retorno do Nº da SMP com sucesso para o e-Cargo","p":"SMP gerada no Apisul","e":"Nº da SMP retornado com sucesso para o e-Cargo","v":"Conferir o Nº da SMP no log de integração","r":"Realizado Ok","a":"INTERMODAL","o":null},{"n":12,"s":"Validar retorno de insucesso na geração da SMP e o reenvio","p":"Geração da SMP com dado inválido no Apisul","e":"Motivo do insucesso retornado; após o ajuste a SMP é gerada","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":13,"s":"Vincular o nº da SMP à OS no e-Cargo","p":"Nº da SMP retornado pelo Apisul","e":"Nº da SMP vinculado e visível na OS do e-Cargo","v":"Consultar a OS no e-Cargo e localizar o Nº da SMP","r":"Não Realizado","a":"INTERMODAL","o":"Definir com Everton"},{"n":14,"s":"Validar a compra do vale-pedágio","p":"Nº da SMP migrado e vinculado à OS no e-Cargo","e":"Vale-pedágio comprado e vinculado à SMP do Rodo Puro, com valor, número do comprovante e rota retornados para o e-Cargo","v":"Consultar a compra do vale-pedágio no Apisul e o registro na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":15,"s":"Receber no e-Cargo os dados do motorista, placa e telefone","p":"SMP gerada com os dados do motorista","e":"Dados do motorista, placa e telefone recebidos e gravados na OS","v":"Consultar os dados do motorista na OS do e-Cargo","r":"Realizado Erro","a":"INTERMODAL","o":null},{"n":16,"s":"Validar a atualização dos dados do motorista/veículo após alteração no Apisul","p":"Troca de motorista ou de veículo na SMP no Apisul","e":"Dados atualizados são reenviados e regravados na OS do e-Cargo","v":"Alterar os dados no Apisul e conferir a atualização no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":17,"s":"Validar o recebimento dos dados de Latitude e Longitude","p":"SMP em andamento no Apisul","e":"Posições de latitude e longitude recebidas pelo e-Cargo","v":"Conferir as posições recebidas no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":18,"s":"Validar a geração dos eventos de tracking no Apisul","p":"Viagem em andamento com posições recebidas","e":"Eventos de tracking gerados no Apisul a partir das posições","v":"Consultar os eventos gerados no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":19,"s":"Validar a gravação dos eventos de tracking no e-Cargo","p":"Eventos gerados no Apisul","e":"Eventos de tracking gravados na OS do e-Cargo","v":"Consultar os eventos na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":20,"s":"Validar os eventos de tracking do modal Rodo Puro","p":"Eventos de tracking gravados","e":"Eventos CHEGADA DO CNTR NO EMBARCADOR, SAÍDA DO CNTR DO EMBARCADOR, INÍCIO e FIM COLETA AUDITADO, CHEGADA e SAÍDA DO CNTR NO DESTINATÁRIO recebidos conforme a aba EVENTOS DE TRACKING V7","v":"Conferir os eventos e os respectivos IDs de tracking","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":21,"s":"Validar que a operação Rodo Puro não é exibida na nova plataforma","p":"Operação Rodo Puro em andamento","e":"Rodo Puro desconsiderado da plataforma, conforme definido na aba EVENTOS DE TRACKING V7","v":"Pesquisar a operação na nova plataforma","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":22,"s":"Validar o ajuste manual de data quando não houver evento automático","p":"Evento não gerado automaticamente pelo Apisul","e":"Data lançada manualmente e gravada no e-Cargo, com identificação do lançamento manual","v":"Lançar a data manualmente e conferir o registro na OS","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":23,"s":"Validar o recebimento do evento Fim de Viagem","p":"Viagem concluída no Apisul","e":"Evento de Fim de Viagem recebido e gravado no e-Cargo","v":"Consultar o evento FIM na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":24,"s":"Validar a rotina de verificação das OS's sem o evento FIM","p":"OS com viagem em andamento e sem evento FIM","e":"Rotina identifica as OS's sem o evento FIM e envia as SMP's para o HUB","v":"Conferir as SMP's enviadas para o HUB","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":25,"s":"Validar o encerramento da SMP e a parada do envio de posições","p":"Evento de Fim de Viagem recebido","e":"SMP encerrada e o envio de latitude/longitude e eventos é interrompido","v":"Conferir o status da SMP e a parada dos envios no log","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":26,"s":"Validar a conclusão da OS de Rodo Puro","p":"Fluxo Rodo Puro concluído sem erros","e":"OS finalizada no e-Cargo com SMP encerrada e todos os eventos gravados","v":"Consultar a OS finalizada no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":6,"name":"Operação Rodo Puro com Cancelamento de OS","items":[{"n":1,"s":"Executar o fluxo Rodo Puro até a geração e o envio da OS","p":"Cenário 5 executado até o envio automático da OS para o Fornecedor e o Apisul","e":"OS gerada, documento de transporte emitido e OS enviada ao Fornecedor e ao Apisul","v":"Consultar a OS no e-Cargo e o recebimento no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":2,"s":"Cancelar a OS no e-Cargo antes da geração da SMP pelo fornecedor","p":"OS enviada ao Apisul e SMP ainda não gerada","e":"OS cancelada no e-Cargo","v":"Consultar o status da OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":3,"s":"Validar o envio automático do cancelamento para o Fornecedor e para o Apisul","p":"OS cancelada no e-Cargo","e":"Cancelamento enviado ao Fornecedor (e-mail) e ao Apisul","v":"Conferir o envio no log de integração e o e-mail do fornecedor","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":4,"s":"Validar que a OS cancelada não permite a geração de SMP no Apisul","p":"OS cancelada e integrada ao Apisul","e":"Apisul bloqueia a geração da SMP para a OS cancelada","v":"Tentar gerar a SMP no Apisul e conferir o bloqueio","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":5,"s":"Validar retorno de insucesso no cancelamento e o reenvio do método","p":"Envio de cancelamento com dado inválido ou OS inexistente","e":"Motivo do insucesso retornado; após o ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":6,"s":"Cancelar a OS após a SMP já gerada no Apisul","p":"SMP gerada no Apisul e nº vinculado à OS","e":"SMP cancelada no Apisul e OS cancelada no e-Cargo","v":"Consultar a SMP no Apisul e a OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":7,"s":"Validar a desvinculação do nº da SMP da OS cancelada","p":"OS cancelada com SMP vinculada","e":"Nº da SMP desvinculado/cancelado na OS do e-Cargo","v":"Consultar a OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":8,"s":"Cancelar a OS após a emissão do documento de transporte","p":"CTe emitido e valor de mercadoria já enviado ao Apisul","e":"CTe cancelado, OS cancelada e SMP cancelada; nenhum dado permanece ativo","v":"Consultar CTe, OS e SMP após o cancelamento","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":9,"s":"Validar o cancelamento da compra do vale-pedágio","p":"SMP cancelada com vale-pedágio já comprado","e":"Vale-pedágio cancelado/estornado e vinculado à SMP cancelada, com retorno do cancelamento para o e-Cargo","v":"Consultar o cancelamento do vale-pedágio no portal Apisul e o registro na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":10,"s":"Validar a interrupção do recebimento de Latitude e Longitude","p":"SMP cancelada com viagem em andamento","e":"Envio de posições interrompido para a SMP cancelada","v":"Conferir a parada dos envios no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":11,"s":"Validar que os eventos de tracking não são gerados após o cancelamento","p":"SMP cancelada","e":"Nenhum novo evento de tracking gerado ou gravado na OS cancelada","v":"Consultar os eventos na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":12,"s":"Validar que a OS cancelada não é considerada na rotina de envio ao HUB","p":"OS cancelada e sem evento FIM","e":"Rotina de OS's sem evento FIM não envia a SMP cancelada para o HUB","v":"Conferir as SMP's enviadas para o HUB","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":13,"s":"Validar o e-mail de cancelamento da OS recebido pelo fornecedor","p":"Cancelamento integrado ao fornecedor","e":"Fornecedor recebe o e-mail informando o cancelamento da OS","v":"Conferir o e-mail recebido pelo fornecedor","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":14,"s":"Gerar nova OS em lote após o cancelamento","p":"OS anterior cancelada","e":"Nova OS gerada, documento emitido e enviada ao Fornecedor e ao Apisul","v":"Consultar a nova OS no e-Cargo e o recebimento no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":15,"s":"Executar o fluxo Rodo Puro completo com a nova OS","p":"Nova OS integrada ao Apisul","e":"Fluxo concluído com SMP gerada, eventos gravados e Fim de Viagem recebido","v":"Acompanhar o fluxo completo até o encerramento da SMP","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":7,"name":"Cancelamento da SMP em uma Coleta","items":[{"n":1,"s":"Executar o fluxo de Coleta até a geração da SMP pelo fornecedor","p":"Cenário 1 executado com OS de coleta enviada ao Apisul","e":"OS de coleta gerada, SMP gerada no Apisul e nº vinculado à OS do e-Cargo","v":"Consultar a OS no e-Cargo e a SMP no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":2,"s":"Iniciar a viagem de coleta e gerar os primeiros eventos de tracking","p":"SMP em andamento com posições sendo recebidas","e":"Eventos SAÍDA DO CNTR DO TERMINAL DE VAZIOS (630) e CHEGADA DO CNTR NO EMBARCADOR (631) gravados na OS de coleta","v":"Consultar os eventos e os IDs de tracking na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":3,"s":"Cancelar a SMP da coleta no Apisul","p":"SMP de coleta em andamento e vinculada à OS","e":"SMP cancelada no Apisul com o motivo do cancelamento registrado","v":"Consultar o status da SMP no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":4,"s":"Validar o envio automático do evento de cancelamento da SMP para o e-Cargo","p":"SMP de coleta cancelada no Apisul","e":"Evento de cancelamento enviado automaticamente ao e-Cargo com nº da SMP, data/hora e motivo","v":"Conferir o envio no log de integração Apisul x e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":5,"s":"Validar a gravação do evento de cancelamento na OS de coleta","p":"Evento de cancelamento recebido pelo e-Cargo","e":"Evento de cancelamento gravado na OS de coleta, vinculado ao Solicit_Embarque_Container_Id","v":"Consultar os eventos na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":6,"s":"Validar o cancelamento da compra do vale-pedágio","p":"SMP de coleta cancelada com vale-pedágio já comprado","e":"Vale-pedágio cancelado/estornado e vinculado à SMP cancelada, com retorno do cancelamento para o e-Cargo","v":"Consultar o cancelamento do vale-pedágio no portal Apisul e o registro na OS de coleta do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":7,"s":"Validar retorno de insucesso no envio do cancelamento e o reenvio do método","p":"Envio do cancelamento com dado inválido ou SMP inexistente","e":"Motivo do insucesso retornado; após o ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":8,"s":"Validar a desvinculação/baixa do nº da SMP na OS de coleta","p":"Cancelamento gravado na OS do e-Cargo","e":"Nº da SMP cancelado/desvinculado na OS, mantendo o histórico do cancelamento","v":"Consultar a OS de coleta no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":9,"s":"Validar a interrupção do recebimento de Latitude e Longitude","p":"SMP de coleta cancelada com viagem em andamento","e":"Envio de posições interrompido imediatamente após o cancelamento","v":"Conferir a parada dos envios no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":10,"s":"Validar que nenhum novo evento de tracking de coleta é gerado após o cancelamento","p":"SMP de coleta cancelada","e":"Eventos SAÍDA DO CNTR DO EMBARCADOR (632), INÍCIO (11406) e FIM COLETA AUDITADO (11407) não são gerados nem gravados","v":"Consultar os eventos na OS de coleta do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":11,"s":"Validar a manutenção dos eventos de coleta gravados antes do cancelamento","p":"Eventos 630 e 631 já gravados na OS","e":"Eventos anteriores ao cancelamento permanecem gravados no histórico da OS","v":"Consultar o histórico de eventos da OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":12,"s":"Validar que a SMP cancelada não é considerada na rotina de envio ao HUB","p":"SMP cancelada e OS de coleta sem evento FIM","e":"Rotina de OS's sem evento FIM desconsidera a SMP cancelada no envio ao HUB","v":"Conferir as SMP's enviadas para o HUB","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":13,"s":"Validar a notificação de cancelamento da SMP recebida pelo fornecedor e pelo e-Cargo","p":"Cancelamento integrado ao e-Cargo","e":"E-mail/notificação de cancelamento da SMP recebido, conforme a aba Lista de e-mails","v":"Conferir o e-mail recebido e o registro no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":14,"s":"Gerar nova SMP para a OS de coleta após o cancelamento","p":"SMP anterior cancelada e OS de coleta ativa","e":"Nova SMP gerada no Apisul e novo nº vinculado à OS de coleta","v":"Consultar a nova SMP no Apisul e o nº na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":15,"s":"Executar o fluxo de coleta completo com a nova SMP","p":"Nova SMP em andamento","e":"Fluxo concluído com os eventos de coleta gravados e Fim de Viagem recebido","v":"Acompanhar o fluxo completo até o encerramento da SMP","r":"Não Realizado","a":"INTERMODAL","o":null}]},{"id":8,"name":"Cancelmento SMP Entrega","items":[{"n":1,"s":"Executar o fluxo de Entrega até a geração da SMP pelo fornecedor","p":"Cenário 3 executado com OS de entrega enviada ao Apisul","e":"OS de entrega gerada, SMP gerada no Apisul e nº vinculado à OS do e-Cargo","v":"Consultar a OS no e-Cargo e a SMP no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":2,"s":"Iniciar a viagem de entrega e gerar os primeiros eventos de tracking","p":"SMP em andamento com posições sendo recebidas","e":"Eventos SAÍDA CNTR DO TERM PORT DEST. (1053) e CHEGADA DO CNTR NO DESTINATÁRIO (654) gravados na OS de entrega","v":"Consultar os eventos e os IDs de tracking na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":3,"s":"Cancelar a SMP da entrega no Apisul","p":"SMP de entrega em andamento e vinculada à OS","e":"SMP cancelada no Apisul com o motivo do cancelamento registrado","v":"Consultar o status da SMP no Apisul","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":4,"s":"Validar o envio automático do evento de cancelamento da SMP para o e-Cargo","p":"SMP de entrega cancelada no Apisul","e":"Evento de cancelamento enviado automaticamente ao e-Cargo com nº da SMP, data/hora e motivo","v":"Conferir o envio no log de integração Apisul x e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":5,"s":"Validar a gravação do evento de cancelamento na OS de entrega","p":"Evento de cancelamento recebido pelo e-Cargo","e":"Evento de cancelamento gravado na OS de entrega, vinculado ao Solicit_Embarque_Container_Id","v":"Consultar os eventos na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":6,"s":"Validar o cancelamento da compra do vale-pedágio","p":"SMP de entrega cancelada com vale-pedágio já comprado","e":"Vale-pedágio cancelado/estornado e vinculado à SMP cancelada, com retorno do cancelamento para o e-Cargo","v":"Consultar o cancelamento do vale-pedágio no portal Apisul e o registro na OS de entrega do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":7,"s":"Validar retorno de insucesso no envio do cancelamento e o reenvio do método","p":"Envio do cancelamento com dado inválido ou SMP inexistente","e":"Motivo do insucesso retornado; após o ajuste o reenvio é aceito","v":"Conferir os dois retornos no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":8,"s":"Validar a desvinculação/baixa do nº da SMP na OS de entrega","p":"Cancelamento gravado na OS do e-Cargo","e":"Nº da SMP cancelado/desvinculado na OS, mantendo o histórico do cancelamento","v":"Consultar a OS de entrega no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":9,"s":"Validar a interrupção do recebimento de Latitude e Longitude","p":"SMP de entrega cancelada com viagem em andamento","e":"Envio de posições interrompido imediatamente após o cancelamento","v":"Conferir a parada dos envios no log de integração","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":10,"s":"Validar que nenhum novo evento de tracking de entrega é gerado após o cancelamento","p":"SMP de entrega cancelada","e":"Eventos SAÍDA DO CNTR DO DESTINATÁRIO (664), INÍCIO (11408) e FIM ENTREGA AUDITADO (11409) e ENTRADA DO CNTR NO DEPOT (659) não são gerados nem gravados","v":"Consultar os eventos na OS de entrega do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":11,"s":"Validar a manutenção dos eventos de entrega gravados antes do cancelamento","p":"Eventos 1053 e 654 já gravados na OS","e":"Eventos anteriores ao cancelamento permanecem gravados no histórico da OS","v":"Consultar o histórico de eventos da OS no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":12,"s":"Validar que a SMP cancelada não é considerada na rotina de envio ao HUB","p":"SMP cancelada e OS de entrega sem evento FIM","e":"Rotina de OS's sem evento FIM desconsidera a SMP cancelada no envio ao HUB","v":"Conferir as SMP's enviadas para o HUB","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":13,"s":"Validar a notificação de cancelamento da SMP recebida pelo fornecedor e pelo e-Cargo","p":"Cancelamento integrado ao e-Cargo","e":"E-mail/notificação de cancelamento da SMP recebido, conforme a aba Lista de e-mails","v":"Conferir o e-mail recebido e o registro no e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":14,"s":"Gerar nova SMP para a OS de entrega após o cancelamento","p":"SMP anterior cancelada e OS de entrega ativa","e":"Nova SMP gerada no Apisul e novo nº vinculado à OS de entrega","v":"Consultar a nova SMP no Apisul e o nº na OS do e-Cargo","r":"Não Realizado","a":"INTERMODAL","o":null},{"n":15,"s":"Executar o fluxo de entrega completo com a nova SMP","p":"Nova SMP em andamento","e":"Fluxo concluído com os eventos de entrega gravados, TRANSPORTE FINALIZADO e Fim de Viagem recebido","v":"Acompanhar o fluxo completo até o encerramento da SMP","r":"Não Realizado","a":"INTERMODAL","o":null}]}];
+
+/* ---------- Utilidades ---------- */
+function statusClass(r){
+    if(r === 'Realizado Ok') return 'ok';
+    if(r === 'Realizado Erro') return 'erro';
+    return 'pend';
+}
+function statusLabel(r){
+    if(r === 'Realizado Ok') return '✅ Testado OK';
+    if(r === 'Realizado Erro') return '🔴 Erro';
+    return '🟡 Aguardando validação';
+}
+function flattenAll(){
+    const out = [];
+    DATA_CENARIOS.forEach(c => {
+        c.items.forEach(it => out.push(Object.assign({ scenarioName: c.name, scenarioId: c.id }, it)));
+    });
+    return out;
+}
+function computeTotals(list){
+    const ok = list.filter(it => it.r === 'Realizado Ok').length;
+    const erro = list.filter(it => it.r === 'Realizado Erro').length;
+    const pend = list.length - ok - erro;
+    return { total: list.length, ok, erro, pend };
+}
+
+/* ---------- Atualiza os cards principais ao carregar ---------- */
+function refreshDashboardCards(){
+    const all = flattenAll();
+    const t = computeTotals(all);
+    document.getElementById('cardTotalSituacoes').textContent = t.total;
+    document.getElementById('cardTotalCenarios').textContent = DATA_CENARIOS.length;
+    document.getElementById('cardBreakdown').innerHTML = `
+        <span><span class="dot ok"></span>${t.ok} OK</span>
+        <span><span class="dot erro"></span>${t.erro} Erro</span>
+        <span><span class="dot pend"></span>${t.pend} Pend.</span>`;
+}
+
+/* ---------- Renderização de item de teste ---------- */
+function renderTestItem(it){
+    const cls = statusClass(it.r);
+    return `
+    <div class="test-item">
+        <div class="test-item-head">
+            <div>
+                <div class="test-item-scenario">Cenário ${it.scenarioId} · ${it.scenarioName}</div>
+                <div class="test-item-title">#${it.n} — ${it.s || ''}</div>
+            </div>
+            <span class="status-pill ${cls}">${statusLabel(it.r)}</span>
+        </div>
+        ${it.p ? `<div class="test-item-field"><b>Premissa:</b> ${it.p}</div>` : ''}
+        ${it.e ? `<div class="test-item-field"><b>Resultado esperado:</b> ${it.e}</div>` : ''}
+        ${it.v ? `<div class="test-item-field"><b>Validação:</b> ${it.v}</div>` : ''}
+        ${it.a ? `<span class="test-item-area">${it.a}</span>` : ''}
+        ${it.o ? `<div class="test-item-obs">⚠️ ${it.o}</div>` : ''}
+    </div>`;
+}
+function renderList(list){
+    const body = document.getElementById('modalBody');
+    if(list.length === 0){
+        body.innerHTML = `<div class="empty-state">Nenhuma situação encontrada nesse filtro.</div>`;
+        return;
+    }
+    body.innerHTML = list.map(renderTestItem).join('');
+}
+
+/* ---------- Estado do modal ---------- */
+let currentScope = null;   // null = todas as situações | número = cenário específico
+let currentFilter = 'all'; // all | ok | erro | pend
+
+function scopedList(){
+    if(currentScope === null) return flattenAll();
+    const c = DATA_CENARIOS.find(c => c.id === currentScope);
+    return c.items.map(it => Object.assign({ scenarioName: c.name, scenarioId: c.id }, it));
+}
+function applyFilter(list, filter){
+    if(filter === 'ok') return list.filter(it => it.r === 'Realizado Ok');
+    if(filter === 'erro') return list.filter(it => it.r === 'Realizado Erro');
+    if(filter === 'pend') return list.filter(it => it.r !== 'Realizado Ok' && it.r !== 'Realizado Erro');
+    return list;
+}
+function renderTabs(list){
+    const t = computeTotals(list);
+    const tabs = [
+        { key: 'all',  label: '📋 Todas',  count: t.total },
+        { key: 'ok',   label: '✅ OK',      count: t.ok },
+        { key: 'erro', label: '🔴 Erro',    count: t.erro },
+        { key: 'pend', label: '🟡 Pendentes', count: t.pend },
+    ];
+    document.getElementById('modalTabs').innerHTML = tabs.map(tb => `
+        <button class="tab-btn ${currentFilter === tb.key ? 'active' : ''}" onclick="setFilter('${tb.key}')">
+            ${tb.label} <span class="tab-count">${tb.count}</span>
+        </button>`).join('');
+}
+function setFilter(filter){
+    currentFilter = filter;
+    renderScoped();
+}
+function renderScoped(){
+    const list = scopedList();
+    renderTabs(list);
+    renderList(applyFilter(list, currentFilter));
+}
+
+/* ---------- Abrir: Situações de Teste (todas) ---------- */
+function openSituacoesModal(){
+    currentScope = null;
+    currentFilter = 'all';
+    document.getElementById('modalTitle').textContent = '🧪 Situações de Teste';
+    document.getElementById('modalSub').textContent = 'Todos os cenários de homologação';
+    document.getElementById('modalBackBtn').classList.remove('show');
+    renderScoped();
+    openModal();
+}
+
+/* ---------- Abrir: lista de Cenários ---------- */
+function openCenariosModal(){
+    document.getElementById('modalTitle').textContent = '📋 Cenários de Homologação';
+    document.getElementById('modalSub').textContent = `${DATA_CENARIOS.length} cenários mapeados`;
+    document.getElementById('modalBackBtn').classList.remove('show');
+    document.getElementById('modalTabs').innerHTML = '';
+    const body = document.getElementById('modalBody');
+    body.innerHTML = DATA_CENARIOS.map(c => {
+        const t = computeTotals(c.items);
+        const pct = t.total ? Math.round((t.ok / t.total) * 100) : 0;
+        return `
+        <div class="scenario-row" onclick="openScenarioDetail(${c.id})">
+            <div class="scenario-num">${c.id}</div>
+            <div class="scenario-info">
+                <div class="sname">${c.name}</div>
+                <div class="scenario-progress"><div class="scenario-progress-bar" style="width:${pct}%"></div></div>
+            </div>
+            <div class="scenario-pct">${pct}%</div>
+            <div class="scenario-arrow">›</div>
+        </div>`;
+    }).join('');
+    openModal();
+}
+
+/* ---------- Abrir: detalhe de um cenário específico ---------- */
+function openScenarioDetail(id){
+    const c = DATA_CENARIOS.find(c => c.id === id);
+    currentScope = id;
+    currentFilter = 'all';
+    document.getElementById('modalTitle').textContent = `Cenário ${c.id} — ${c.name}`;
+    document.getElementById('modalSub').textContent = `${c.items.length} situações de teste`;
+    document.getElementById('modalBackBtn').classList.add('show');
+    renderScoped();
+}
+function backToCenarios(){
+    openCenariosModal();
+}
+
+/* ---------- Abrir/Fechar modal ---------- */
+function openModal(){
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e){
+    if(e.target.id === 'modalOverlay') closeModal();
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* ---------- Inicialização ---------- */
+refreshDashboardCards();
+</script>
+
 </body>
 </html>
